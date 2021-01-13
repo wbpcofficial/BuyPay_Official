@@ -1,0 +1,15 @@
+{
+  "name": "create-buypay-official",
+  "description": "description",
+  "version": "0.0.0",
+  "author": "",
+  "bin": "src/cli.js",
+  "files": [
+    "src",
+    "templates"
+  ],
+  "dependencies": {
+    "create-create-app": "^7.0.0"
+  },
+  "license": "AGPL-3.0"
+}
