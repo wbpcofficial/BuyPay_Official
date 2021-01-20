@@ -1,18 +1,13 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { withRouter, Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { withRouter } from "react-router-dom";
 import { getAuth } from "../../utils";
 import { UserType } from "../../constants";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Navbar from "react-bootstrap/Navbar";
 import AppContext from "../AppContext";
 import styles from './Header.module.scss';
 
 const Header = ({ history }) => {
   const appContext = useContext(AppContext);
   const [auth, setAuth] = useState(false);
-  const ref = useRef(null);
-  // console.log(appContext.auth);
   useEffect(() => {
     setAuth(getAuth());
   }, [history.location, appContext.auth]);
@@ -26,22 +21,29 @@ const Header = ({ history }) => {
     }
   }
 
+  const ToLogin = () => {
+    history.push("/login");
+  }
+
+  const ToSignUp = () => {
+    history.push("/register")
+  }
 
   return (
     <>
       <div className={styles.Header}>
         <div className={styles.Brand}>
-          <div>buypay</div>
+          <img src="../assets/logo/buypay_logo.png" />
         </div>
 
         <div className={styles.ButtonGroup}>
           <div className={styles.Login}>
-            <div className={styles.LoginText}>
+            <div className={styles.LoginText} onClick={ToLogin}>
               Log in
             </div>
           </div>
           <div className={styles.Signup}>
-            <div className={styles.SignupText}>
+            <div className={styles.SignupText} onClick={ToSignUp}>
               Sign up
             </div>
           </div>
