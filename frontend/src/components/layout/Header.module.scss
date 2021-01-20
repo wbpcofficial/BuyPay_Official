@@ -1,0 +1,64 @@
+.Header {
+  // position: absolute;
+  // width: 1440px;
+  height: 100px;
+  // left: 0px;
+  // top: 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #ffffff;
+
+  .Brand {
+    // width: 151px;
+    // height: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  .ButtonGroup {
+    display: flex;
+    .Login {
+      width: 84px;
+      height: 36px;
+
+      background: #30344d;
+      border-radius: 100px;
+      padding: 4px 20px 6px 20px;
+
+      .LoginText {
+        width: 44px;
+        height: 26px;
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 160%;
+        color: #ffffff;
+      }
+    }
+
+    .Signup {
+      width: 95px;
+      height: 36px;
+
+      border: 1.5px solid #30344d;
+      box-sizing: border-box;
+      border-radius: 100px;
+      padding: 4px 20px 6px 20px;
+
+      margin-left: 12px;
+
+      .SignupText {
+        width: 55px;
+        height: 26px;
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 160%;
+        color: #30344d;
+      }
+    }
+  }
+}

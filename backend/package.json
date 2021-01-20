@@ -1,7 +1,7 @@
 {
   "name": "timezone-api",
   "version": "1.0.0",
-  "description": "Timezone API for Toptal Test Project",
+  "description": "BuyPay API",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/index.js"
