@@ -14,7 +14,7 @@ const CustomInput = ({ id, name, label, formRef, error, placeholder, ...props })
       <div className={styles.InputContainer}>
         <input
           placeholder={placeholder}
-          className={styles.Input}
+          className={error ? styles.InputError : styles.Input}
           id={id}
           name={name}
           ref={formRef}

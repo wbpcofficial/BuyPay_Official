@@ -20,6 +20,8 @@ import EditUser from "./user/EditUser";
 import Profile from "./auth/Profile";
 import { getAuth } from "../utils";
 import AppContext from "./AppContext";
+import FindPassword from "./auth/FindPassword";
+import ChangePassword from "./auth/ChangePassword";
 
 function App() {
   const [auth, setAuth] = useState(getAuth());
@@ -35,6 +37,8 @@ function App() {
                 <Redirect to="/timezones" />
               </AuthRoute>
               <Route exact path="/login" component={Login} />
+              <Route exact path="/findpassword" component={FindPassword} />
+              <Route exact path="/changepassword" component={ChangePassword} />
               <Route exact path="/register" component={Register} />
               <AuthRoute exact path="/profile" component={Profile} />
               <Route exact path="/logout" component={Logout} />
