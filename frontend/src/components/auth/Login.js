@@ -38,15 +38,15 @@ const Login = ({ history }) => {
             <div className={styles.InputContainer}>
               <div className={styles.IdInput}>
                 <CustomInput
-                  label="ID"
-                  placeholder="Enter Your ID"
+                  label="Email"
+                  placeholder="Enter Your Email"
                   name="email"
                   type="email"
-                  autoComplete="id"
+                  autoComplete="email"
                   formRef={register({
                     required: { value: true, message: "An Id is required" },
                   })}
-                  error={errors.id}
+                  error={errors.email}
                 />
               </div>
 
