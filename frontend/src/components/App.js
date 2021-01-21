@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,7 +20,7 @@ import EditUser from "./user/EditUser";
 import Profile from "./auth/Profile";
 import { getAuth } from "../utils";
 import AppContext from "./AppContext";
-
+import Home from "../pages/Home"
 function App() {
   const [auth, setAuth] = useState(getAuth());
   return (
@@ -32,8 +32,9 @@ function App() {
           <div className="main container py-4">
             <Switch>
               <AuthRoute exact path="/">
-                <Redirect to="/timezones" />
+                <Redirect to="/" />
               </AuthRoute>
+              <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
               <AuthRoute exact path="/profile" component={Profile} />

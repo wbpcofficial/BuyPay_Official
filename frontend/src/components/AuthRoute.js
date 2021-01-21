@@ -30,10 +30,10 @@ const AuthRoute = ({ permit, component: Component, children, ...rest }) => {
           permitted ? (
             <Component {...props} />
           ) : (
-            <Redirect to="/" />
+            <Redirect to="/timezone" />
           )
         ) : (
-          <Redirect to="/login" />
+          <Redirect to="/" />
         )
       }
     >
