@@ -1,14 +1,19 @@
 import React from "react";
-import { withRouter} from "react-router-dom";
-import styles from './index.module.scss';
+import Footer from "../../components/Footer";
+import MainBg from "./MainBg";
+import About from "./About";
+import Description from "./Description";
+import styles from "./index.module.scss";
 
 const Home = () => {
-
   return (
-    <>
-      Homepage
-    </>
+    <div className={styles.homepage}>
+      <MainBg />
+      <About />
+      <Description />
+      <Footer />
+    </div>
   );
 };
 
-export default withRouter(Home);
+export default Home;

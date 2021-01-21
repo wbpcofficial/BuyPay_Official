@@ -31,9 +31,9 @@ function App() {
 
           <div className="main">
             <Switch>
-              <AuthRoute exact path="/">
+              {/* <AuthRoute exact path="/">
                 <Redirect to="/" />
-              </AuthRoute>
+              </AuthRoute> */}
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />

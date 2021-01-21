@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { getAuth } from "../../utils";
 import { UserType } from "../../constants";
 import AppContext from "../AppContext";
-import styles from './Header.module.scss';
+import styles from "./Header.module.scss";
 
 const Header = ({ history }) => {
   const appContext = useContext(AppContext);
@@ -23,17 +23,20 @@ const Header = ({ history }) => {
 
   const ToLogin = () => {
     history.push("/login");
-  }
+  };
 
   const ToSignUp = () => {
-    history.push("/register")
-  }
+    history.push("/register");
+  };
+  const ToHome = () => {
+    history.push("/");
+  };
 
   return (
     <>
       <div className={styles.Header}>
         <div className={styles.Brand}>
-          <img src="../assets/logo/buypay_logo.png" />
+          <img src="../assets/logo/buypay_logo.png" onClick={ToHome} />
         </div>
 
         <div className={styles.ButtonGroup}>

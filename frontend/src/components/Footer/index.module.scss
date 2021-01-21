@@ -1,0 +1,71 @@
+.footer {
+  background: #30344d;
+  width: 100%;
+  height: 362px;
+  padding: 80px 230px 80px 230px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    .company {
+      width: 260px;
+      .title {
+        font-style: normal;
+        font-weight: 800;
+        font-size: 28px;
+        line-height: 160%;
+        color: #ffffff;
+      }
+      .text {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 160%;
+        letter-spacing: 0.01em;
+        color: #c8d2dd;
+      }
+    }
+    .contactus {
+      display: flex;
+      .title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 160%;
+        letter-spacing: 0.01em;
+        color: #ffffff;
+        margin-bottom: 22px;
+      }
+      .text {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 180%;
+        letter-spacing: 0.01em;
+        color: #c8d2dd;
+      }
+      .sitemap {
+        margin-right: 80px;
+        .text {
+          display: flex;
+          flex-direction: column;
+          a {
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+  .copyright {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 160%;
+    letter-spacing: 0.01em;
+    color: #838a94;
+    text-align: center;
+    margin-top: 80px;
+  }
+}
