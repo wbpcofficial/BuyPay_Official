@@ -1,0 +1,150 @@
+.Container {
+  height: 100%;
+  padding: 74px 0px 75px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .Card {
+    width: 680px;
+    height: 775px;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+
+    padding: 60px 100px 60px 100px;
+
+    .LoginIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 110px;
+        height: 110px;
+      }
+    }
+
+    .Title {
+      margin-top: 12px;
+      height: 45px;
+
+      font-family: SF Pro Display;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 140%;
+      text-align: center;
+      color: #222222;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .InputContainer {
+      margin-top: 60px;
+
+      .PasswordInput {
+        margin-top: 40px;
+      }
+    }
+
+    .FindBtnGroup {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+
+      .FindID {
+        width: 47px;
+        height: 22px;
+        div {
+          font-family: SF Pro Display;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 140%;
+          text-align: right;
+          color: #838a94;
+        }
+      }
+
+      .Bar {
+        width: 1px;
+        height: 14px;
+        background: #cdd4dc;
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+
+      .FindPassword {
+        width: 98px;
+        height: 22px;
+
+        div {
+          font-family: SF Pro Display;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 140%;
+          color: #838a94;
+        }
+      }
+    }
+
+    .LoginBtn {
+      width: 480px;
+      height: 64px;
+      background: #222222;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.18);
+      border-radius: 4px;
+      border: none;
+      margin-top: 40px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .Text {
+        width: 53px;
+        height: 25px;
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 140%;
+        text-align: center;
+
+        color: #ffffff;
+      }
+    }
+
+    .Footer {
+      display: flex;
+      margin-top: 18px;
+      .Quiz {
+        width: 157px;
+        height: 22px;
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 140%;
+        color: #838a94;
+      }
+      .Register {
+        width: 61px;
+        height: 22px;
+
+        font-family: SF Pro Display;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 140%;
+        color: #5920d1;
+      }
+    }
+  }
+}

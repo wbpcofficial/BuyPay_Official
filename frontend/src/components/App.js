@@ -29,7 +29,7 @@ function App() {
         <div className="App">
           <Header />
 
-          <div className="main container py-4">
+          <div className="main">
             <Switch>
               <AuthRoute exact path="/">
                 <Redirect to="/timezones" />
