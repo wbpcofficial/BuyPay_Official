@@ -19,6 +19,7 @@ router.route('/profile')
   .patch(authorize(), controller.updateProfile);
 router.route('/refresh-token')
   .post(validate(refresh), controller.refresh);
-
+router.route('/captcha')
+  .get(controller.getCaptcha)
 
 module.exports = router;

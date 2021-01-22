@@ -6,11 +6,11 @@
 
 .Label {
   color: #838a94;
-  font-size: 0.8rem;
+  font-size: 16px;
 }
 
 .Input {
-  font-size: 1rem;
+  font-size: 20px;
   background-color: rgb(255, 255, 255);
   display: block;
   width: 100%;
@@ -28,14 +28,41 @@
   }
   &::placeholder {
     color: rgb(197, 197, 197);
-    font-size: 0.8rem;
+    font-size: 20px;
+  }
+}
+
+.InputError {
+  font-size: 20px;
+  background-color: rgb(255, 255, 255);
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid#cdd4dc;
+  outline: none;
+  height: 35px;
+  color: #475c91;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  &:focus {
+    // box-shadow: 0 0 0 0.2rem #73aaf2;
+    outline: 0;
+    border: none;
+    border-bottom: 3px solid#FF2020;
+  }
+  &::placeholder {
+    color: rgb(197, 197, 197);
+    font-size: 20px;
   }
 }
 
 .Error {
-  color: #d94e4e;
-  font-size: 0.7rem;
   position: absolute;
   left: 5px;
-  bottom: -18px;
+  bottom: -22px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 140%;
+  color: #ff2020;
 }

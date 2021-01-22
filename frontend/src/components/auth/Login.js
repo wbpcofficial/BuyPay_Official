@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { login } from "../../services";
 import CustomInput from "../FormComponents/Input/CustomInput";
-import styles from "./Login.module.scss";
+import styles from "./Auth.module.scss";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -24,6 +24,14 @@ const Login = ({ history }) => {
     }
   };
 
+  const Register = () => {
+    history.push("/register");
+  }
+
+  const findPassword = () => {
+    history.push("/findpassword");
+  }
+
   return (
     <>
       <div className={styles.Container}>
@@ -44,7 +52,7 @@ const Login = ({ history }) => {
                   type="email"
                   autoComplete="email"
                   formRef={register({
-                    required: { value: true, message: "An Id is required" },
+                    required: { value: true, message: "An Email is required" },
                   })}
                   error={errors.email}
                 />
@@ -68,7 +76,7 @@ const Login = ({ history }) => {
             <div className={styles.FindBtnGroup}>
               <div className={styles.FindID}><div>Find Id</div></div>
               <div className={styles.Bar}></div>
-              <div className={styles.FindPassword}><div>Find Password</div></div>
+              <div className={styles.FindPassword} onClick={findPassword}><div>Find Password</div></div>
             </div>
 
             <button className={styles.LoginBtn}>
@@ -77,7 +85,7 @@ const Login = ({ history }) => {
 
             <div className={styles.Footer}>
               <div className={styles.Quiz}>Don't have an account?</div>
-              <div className={styles.Register}>Register</div>
+              <div className={styles.Register} onClick={Register}>Register</div>
             </div>
           </form>
         </div>

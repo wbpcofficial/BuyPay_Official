@@ -8,6 +8,7 @@ import {
   API_REFRESH_TOKEN_URL,
   API_USERS_URL,
   API_TIMEZONES_URL,
+  API_GET_CAPTCHA,
 } from "../constants";
 
 const authHeaderConfig = () => {
@@ -86,6 +87,20 @@ export const updateProfile = async (data) => {
     throw responseError(e);
   }
 };
+
+/**
+ * 
+ * Api service to get Captcah 
+ */
+export const getCaptcha = async (data) => {
+  try {
+    const response = await axios.get(API_GET_CAPTCHA, data);
+    return response.data;
+  } catch (e) {
+    throw responseError(e);
+  }
+}
+
 
 /**
  * Api services to manage Users

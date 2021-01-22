@@ -20,7 +20,10 @@ import EditUser from "./user/EditUser";
 import Profile from "./auth/Profile";
 import { getAuth } from "../utils";
 import AppContext from "./AppContext";
-import Home from "../pages/Home"
+import Home from "../pages/Home";
+import FindPassword from "./auth/FindPassword";
+import ChangePassword from "./auth/ChangePassword";
+
 function App() {
   const [auth, setAuth] = useState(getAuth());
   return (
@@ -36,6 +39,8 @@ function App() {
               </AuthRoute> */}
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/findpassword" component={FindPassword} />
+              <Route exact path="/changepassword" component={ChangePassword} />
               <Route exact path="/register" component={Register} />
               <AuthRoute exact path="/profile" component={Profile} />
               <Route exact path="/logout" component={Logout} />
@@ -70,7 +75,6 @@ function App() {
                 path="/users/:userId/edit"
                 component={EditUser}
               />
-
             </Switch>
           </div>
         </div>
