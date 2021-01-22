@@ -4,8 +4,10 @@
   height: 100px;
   // left: 0px;
   // top: 0px;
+  padding-left: 230px;
+  padding-right: 230px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background: #ffffff;
 
@@ -14,6 +16,10 @@
     // height: 32px;
     display: flex;
     align-items: center;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(110%);
+    }
   }
 
   .ButtonGroup {
@@ -25,8 +31,14 @@
 
       background: #30344d;
       border-radius: 100px;
-      padding: 4px 20px 6px 20px;
-
+      padding: 5px 20px 5px 20px;
+      &:hover {
+        background: white;
+        border: 1.5px solid #30344d;
+        .LoginText {
+          color: black;
+        }
+      }
       .LoginText {
         width: 44px;
         height: 26px;
@@ -42,14 +54,17 @@
     .Signup {
       width: 95px;
       height: 36px;
-
       border: 1.5px solid #30344d;
       box-sizing: border-box;
       border-radius: 100px;
-      padding: 4px 20px 6px 20px;
-
+      padding: 5px 20px 5px 20px;
       margin-left: 12px;
-
+      &:hover {
+        background: #30344d;
+        .SignupText {
+          color: white;
+        }
+      }
       .SignupText {
         width: 55px;
         height: 26px;

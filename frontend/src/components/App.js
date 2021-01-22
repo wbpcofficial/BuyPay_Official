@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +20,7 @@ import EditUser from "./user/EditUser";
 import Profile from "./auth/Profile";
 import { getAuth } from "../utils";
 import AppContext from "./AppContext";
+import Home from "../pages/Home";
 import FindPassword from "./auth/FindPassword";
 import ChangePassword from "./auth/ChangePassword";
 
@@ -33,9 +34,10 @@ function App() {
 
           <div className="main">
             <Switch>
-              <AuthRoute exact path="/">
-                <Redirect to="/timezones" />
-              </AuthRoute>
+              {/* <AuthRoute exact path="/">
+                <Redirect to="/" />
+              </AuthRoute> */}
+              <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/findpassword" component={FindPassword} />
               <Route exact path="/changepassword" component={ChangePassword} />
@@ -73,7 +75,6 @@ function App() {
                 path="/users/:userId/edit"
                 component={EditUser}
               />
-
             </Switch>
           </div>
         </div>
