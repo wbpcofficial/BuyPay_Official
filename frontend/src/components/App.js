@@ -39,7 +39,6 @@ function App() {
                 <Redirect to="/" />
               </AuthRoute> */}
               <Route exact path="/" component={Home} />
-              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/findpassword" component={FindPassword} />
               <Route exact path="/changepassword" component={ChangePassword} />
@@ -77,6 +76,7 @@ function App() {
                 path="/users/:userId/edit"
                 component={EditUser}
               />
+              <AuthRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </div>
         </div>
