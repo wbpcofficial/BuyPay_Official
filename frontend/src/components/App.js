@@ -21,6 +21,7 @@ import Profile from "./auth/Profile";
 import { getAuth } from "../utils";
 import AppContext from "./AppContext";
 import Home from "../pages/Home";
+import Dashboard from "../pages/Dashboard";
 import FindPassword from "./auth/FindPassword";
 import ChangePassword from "./auth/ChangePassword";
 
@@ -38,6 +39,7 @@ function App() {
                 <Redirect to="/" />
               </AuthRoute> */}
               <Route exact path="/" component={Home} />
+              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/findpassword" component={FindPassword} />
               <Route exact path="/changepassword" component={ChangePassword} />

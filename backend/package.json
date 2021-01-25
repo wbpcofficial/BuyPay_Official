@@ -23,6 +23,7 @@
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
+    "react-select": "^4.0.2",
     "svg-captcha": "^1.4.0"
   },
   "devDependencies": {
