@@ -9,15 +9,15 @@ const Login = ({ history }) => {
   const [password, setPassword] = useState("");
   const [submitError, setSubmitError] = useState(null);
 
-  const { register, handleSubmit, errors} = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = async ({ email, password}) => {
+  const onSubmit = async ({ email, password }) => {
     try {
       await login({
         email,
         password,
       });
-      history.push("/");
+      history.push("/dashboard");
     } catch (e) {
       console.log(e.message);
       setSubmitError(e.message);
@@ -26,11 +26,11 @@ const Login = ({ history }) => {
 
   const Register = () => {
     history.push("/register");
-  }
+  };
 
   const findPassword = () => {
     history.push("/findpassword");
-  }
+  };
 
   return (
     <>
@@ -66,17 +66,24 @@ const Login = ({ history }) => {
                   type="password"
                   autoComplete="password"
                   formRef={register({
-                    required: { value: true, message: "A password is required" },
+                    required: {
+                      value: true,
+                      message: "A password is required",
+                    },
                   })}
                   error={errors.password}
                 />
               </div>
             </div>
-            
+
             <div className={styles.FindBtnGroup}>
-              <div className={styles.FindID}><div>Find Id</div></div>
+              <div className={styles.FindID}>
+                <div>Find Id</div>
+              </div>
               <div className={styles.Bar}></div>
-              <div className={styles.FindPassword} onClick={findPassword}><div>Find Password</div></div>
+              <div className={styles.FindPassword} onClick={findPassword}>
+                <div>Find Password</div>
+              </div>
             </div>
 
             <button className={styles.LoginBtn}>
@@ -85,7 +92,9 @@ const Login = ({ history }) => {
 
             <div className={styles.Footer}>
               <div className={styles.Quiz}>Don't have an account?</div>
-              <div className={styles.Register} onClick={Register}>Register</div>
+              <div className={styles.Register} onClick={Register}>
+                Register
+              </div>
             </div>
           </form>
         </div>
