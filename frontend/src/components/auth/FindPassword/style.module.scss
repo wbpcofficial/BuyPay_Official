@@ -1,0 +1,99 @@
+.MessageContainer {
+  height: 100%;
+  padding: 74px 0px 75px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .Text {
+    font-size: 40px;
+    // font-weight: normal;
+    // line-height: 400;
+  }
+}
+
+.Container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #5920d1;
+  padding: 182px 0px;
+
+  .Card {
+    width: 680px;
+    height: 518px;
+
+    background: #ffffff;
+    box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+
+    padding: 36px 102px 72px 98px;
+
+    .LoginIcon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 278px;
+        height: 158px;
+      }
+    }
+
+    .Title {
+      margin-top: 25px;
+      height: 45px;
+
+      font-style: normal;
+      font-weight: normal;
+      font-size: 32px;
+      line-height: 140%;
+      text-align: center;
+      color: #222222;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .SubTitle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 12px;
+      height: 26px;
+
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 160%;
+      text-align: center;
+      color: #969fab;
+    }
+    .LoginBtn {
+      width: 480px;
+      height: 64px;
+      margin-top: 80px;
+      background: #222222;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.18);
+      border-radius: 4px;
+      border: none;
+      margin-top: 40px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .Text {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 140%;
+        text-align: center;
+
+        color: #ffffff;
+      }
+    }
+  }
+}

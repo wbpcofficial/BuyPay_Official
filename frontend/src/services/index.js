@@ -9,6 +9,9 @@ import {
   API_USERS_URL,
   API_TIMEZONES_URL,
   API_GET_CAPTCHA,
+  API_FORGOT_PASSWORD_URL,
+  API_CHECK_TOKEN_URL,
+  API_RESET_PASSWORD_URL,
 } from "../constants";
 
 const authHeaderConfig = () => {
@@ -42,7 +45,7 @@ const refreshToken = async () => {
 
 const responseError = (error) => {
   if (error.response && error.response.status === 401) {
-    console.log('logging out');
+    console.log("logging out");
     logout();
   }
   const message = error.response ? error.response.data.message : error.message;
@@ -50,7 +53,7 @@ const responseError = (error) => {
 };
 
 export const logout = () => {
-  console.log('removing from somewhere');
+  console.log("removing from somewhere");
   localStorage.removeItem("auth");
 };
 
@@ -74,6 +77,35 @@ export const login = async (data) => {
   }
 };
 
+export const forgotPassword = async (data) => {
+  try {
+    const response = await axios.post(API_FORGOT_PASSWORD_URL, data);
+    return response.data;
+  } catch (e) {
+    throw responseError(e);
+  }
+};
+
+export const checkToken = async (data) => {
+  try {
+    const response = await axios.get(API_CHECK_TOKEN_URL, {
+      params: { token: data.token },
+    });
+    return response.data;
+  } catch (e) {
+    throw responseError(e);
+  }
+};
+
+export const resetPassword = async (data) => {
+  try {
+    const response = await axios.patch(API_RESET_PASSWORD_URL, data);
+    return response.data;
+  } catch (e) {
+    throw responseError(e);
+  }
+};
+
 export const updateProfile = async (data) => {
   try {
     const response = await axios.patch(
@@ -89,8 +121,8 @@ export const updateProfile = async (data) => {
 };
 
 /**
- * 
- * Api service to get Captcah 
+ *
+ * Api service to get Captcah
  */
 export const getCaptcha = async (data) => {
   try {
@@ -99,8 +131,7 @@ export const getCaptcha = async (data) => {
   } catch (e) {
     throw responseError(e);
   }
-}
-
+};
 
 /**
  * Api services to manage Users

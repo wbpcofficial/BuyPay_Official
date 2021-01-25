@@ -29,10 +29,6 @@ select {
   border: 1px solid #ddd;
 }
 
-.main {
-  /* background: #5920d1; */
-}
-
 .btn-primary {
   color: #fff;
   background-color: #3490dc;
@@ -62,4 +58,7 @@ select {
 
 .card-body {
   overflow: auto;
+}
+
+.container {
 }

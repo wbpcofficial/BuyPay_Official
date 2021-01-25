@@ -3,7 +3,6 @@ import { register } from "../../services";
 import { emailValid } from "../../utils";
 
 const Register = ({ history }) => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,17 +17,10 @@ const Register = ({ history }) => {
     if (submitted) {
       validateInput();
     }
-  }, [name, email, password, confirmPassword]);
+  }, [email, password, confirmPassword]);
 
   const validateInput = () => {
     let hasError = false;
-
-    if (name.trim().length === 0) {
-      setNameError("Name is required.");
-      hasError = true;
-    } else {
-      setNameError(null);
-    }
 
     if (email.trim().length === 0) {
       setEmailError("Email is required.");
@@ -62,7 +54,6 @@ const Register = ({ history }) => {
     if (validateInput()) {
       try {
         await register({
-          name,
           email,
           password,
         });
@@ -83,30 +74,6 @@ const Register = ({ history }) => {
 
             <div className="card-body">
               <form onSubmit={handleSubmit}>
-                <div className="form-group row">
-                  <label className="col-md-4 col-form-label text-md-right">
-                    Name
-                  </label>
-
-                  <div className="col-md-6">
-                    <input
-                      id="name"
-                      type="text"
-                      className={
-                        "form-control" + (nameError ? " is-invalid" : "")
-                      }
-                      name="name"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    {nameError && (
-                      <span className="invalid-feedback" role="alert">
-                        <strong>{nameError}</strong>
-                      </span>
-                    )}
-                  </div>
-                </div>
-
                 <div className="form-group row">
                   <label className="col-md-4 col-form-label text-md-right">
                     Email Address

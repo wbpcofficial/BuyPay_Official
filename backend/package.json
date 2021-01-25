@@ -1,5 +1,5 @@
 {
-  "name": "timezone-api",
+  "name": "buypay-api",
   "version": "1.0.0",
   "description": "BuyPay API",
   "main": "index.js",
@@ -21,6 +21,7 @@
     "moment-timezone": "^0.5.32",
     "mongoose": "^5.11.8",
     "morgan": "^1.10.0",
+    "nodemailer": "^6.4.17",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "svg-captcha": "^1.4.0"
