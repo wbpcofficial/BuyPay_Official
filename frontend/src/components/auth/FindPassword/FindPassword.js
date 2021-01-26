@@ -9,10 +9,11 @@ const FindPassword = ({ history }) => {
   const [captchaImage, setCaptchaImage] = useState("");
   const [captchaInput, setCaptchaInput] = useState("");
   const [checkFlag, setCheckFlag] = useState(false);
+  const [checkText, setCheckText] = useState("check");
   const [flag, setFlag] = useState(true);
   const { register, handleSubmit, errors } = useForm();
   const ref = useRef(null);
-  const [checkText, setCheckText] = useState("check");
+
   useEffect(() => {
     Captcha();
   }, []);

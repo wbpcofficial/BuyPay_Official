@@ -57,7 +57,7 @@ export const logout = () => {
   localStorage.removeItem("auth");
 };
 
-export const register = async (data) => {
+export const registerUser = async (data) => {
   try {
     const response = await axios.post(API_REGISTER_URL, data);
     saveAuth(response.data);

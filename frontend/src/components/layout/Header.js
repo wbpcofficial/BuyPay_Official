@@ -40,16 +40,20 @@ const Header = ({ history }) => {
         </div>
 
         <div className={styles.ButtonGroup}>
-          <div className={styles.Login}>
-            <div className={styles.LoginText} onClick={ToLogin}>
-              Log in
-            </div>
-          </div>
-          <div className={styles.Signup}>
-            <div className={styles.SignupText} onClick={ToSignUp}>
-              Sign up
-            </div>
-          </div>
+          {auth && (
+            <React.Fragment>
+              <div className={styles.Login}>
+                <div className={styles.LoginText} onClick={ToLogin}>
+                  Log in
+                </div>
+              </div>
+              <div className={styles.Signup}>
+                <div className={styles.SignupText} onClick={ToSignUp}>
+                  Sign up
+                </div>
+              </div>
+            </React.Fragment>
+          )}
         </div>
       </div>
       {/* <Navbar collapseOnSelect expand="md" variant="dark" bg="primary">
