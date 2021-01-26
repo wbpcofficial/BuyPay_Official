@@ -1,0 +1,112 @@
+.dashboard {
+  padding: 80px 15% 80px 15%;
+  background-color: #f4f6f8;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    .title {
+      font-style: normal;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 140%;
+      color: #222222;
+      padding: 0;
+      margin: 0;
+    }
+    & > div {
+      display: flex;
+      height: 36px;
+      align-self: center;
+      .btn {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 160%;
+        text-align: right;
+        color: #464e62;
+        padding: 4px 20px 6px 20px;
+        background: #ffffff;
+        box-shadow: 0px 2px 4px rgba(48, 52, 77, 0.1);
+        border-radius: 4px;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 12px;
+        }
+        &:hover {
+          box-shadow: 0px 2px 4px rgba(48, 52, 77, 0.5);
+        }
+      }
+    }
+  }
+
+  .cardContainer {
+    .flex {
+      display: flex;
+      justify-content: space-between;
+      & > div {
+        border-radius: 8px;
+        padding: 24px;
+        .imgContainer {
+          width: 60px;
+          height: 60px;
+          min-width: 60px;
+          margin-right: 16px;
+          border-radius: 100%;
+          border: 1px solid black;
+        }
+        .title {
+          font-style: normal;
+          font-weight: bold;
+          font-size: 20px;
+          line-height: 140%;
+          color: #ffffff;
+        }
+        .content {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-style: normal;
+          font-weight: 300;
+          font-size: 13px;
+          line-height: 140%;
+          color: #ffffff;
+        }
+      }
+      .address {
+        background: #5920d1;
+        height: 160px;
+        width: 32%;
+      }
+      .balance {
+        background: #2d53db;
+        height: 160px;
+        width: 32%;
+        margin-left: 2%;
+      }
+      .network {
+        background: #20a7d1;
+        height: 160px;
+        margin-left: 2%;
+        width: 32%;
+      }
+      .sendTransaction {
+        width: 66%;
+        margin-top: 20px;
+        margin-right: 16px;
+        background: #ffffff;
+        .title {
+          font-style: normal;
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 140%;
+          color: #464e62;
+        }
+      }
+      .tokenList {
+        width: 32%;
+        background: #ffffff;
+        margin-top: 20px;
+      }
+    }
+  }
+}

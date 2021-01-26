@@ -21,6 +21,9 @@ import Profile from "./auth/Profile";
 import { getAuth } from "../utils";
 import AppContext from "./AppContext";
 import Home from "../pages/Home";
+import Dashboard from "../pages/Dashboard";
+import FindPassword from "./auth/FindPassword";
+import ChangePassword from "./auth/ChangePassword";
 import FindPassword from "./auth/FindPassword/FindPassword";
 import ResetPassword from "./auth/FindPassword/ResetPassword";
 import Success from "./auth/FindPassword/Success";
@@ -87,6 +90,7 @@ function App() {
                 path="/users/:userId/edit"
                 component={EditUser}
               />
+              <AuthRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
           </div>
         </div>
