@@ -25,6 +25,12 @@ const Header = ({ history }) => {
     history.push("/login");
   };
 
+  const Logout = () => {
+    localStorage.removeItem("auth");
+    setAuth(false);
+    history.push("/");
+  };
+
   const ToSignUp = () => {
     history.push("/register");
   };
@@ -40,7 +46,7 @@ const Header = ({ history }) => {
         </div>
 
         <div className={styles.ButtonGroup}>
-          {auth && (
+          {!auth && (
             <React.Fragment>
               <div className={styles.Login}>
                 <div className={styles.LoginText} onClick={ToLogin}>
@@ -50,6 +56,15 @@ const Header = ({ history }) => {
               <div className={styles.Signup}>
                 <div className={styles.SignupText} onClick={ToSignUp}>
                   Sign up
+                </div>
+              </div>
+            </React.Fragment>
+          )}
+          {auth && (
+            <React.Fragment>
+              <div className={styles.Logout}>
+                <div className={styles.LogoutText} onClick={Logout}>
+                  Logout
                 </div>
               </div>
             </React.Fragment>
