@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import AuthRoute from "./AuthRoute";
 import Header from "./layout/Header";
@@ -22,8 +17,6 @@ import { getAuth } from "../utils";
 import AppContext from "./AppContext";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
-import FindPassword from "./auth/FindPassword";
-import ChangePassword from "./auth/ChangePassword";
 import FindPassword from "./auth/FindPassword/FindPassword";
 import ResetPassword from "./auth/FindPassword/ResetPassword";
 import Success from "./auth/FindPassword/Success";
