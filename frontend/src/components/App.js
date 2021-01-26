@@ -24,6 +24,10 @@ import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import FindPassword from "./auth/FindPassword";
 import ChangePassword from "./auth/ChangePassword";
+import FindPassword from "./auth/FindPassword/FindPassword";
+import ResetPassword from "./auth/FindPassword/ResetPassword";
+import Success from "./auth/FindPassword/Success";
+import Message from "./auth/FindPassword/Message";
 
 function App() {
   const [auth, setAuth] = useState(getAuth());
@@ -41,7 +45,17 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/findpassword" component={FindPassword} />
-              <Route exact path="/changepassword" component={ChangePassword} />
+              <Route
+                exact
+                path="/resetpassword/:token"
+                component={ResetPassword}
+              />
+              <Route
+                exact
+                path="/findpassword/messagesent"
+                component={Message}
+              />
+              <Route exact path="/success" component={Success} />
               <Route exact path="/register" component={Register} />
               <AuthRoute exact path="/profile" component={Profile} />
               <Route exact path="/logout" component={Logout} />
