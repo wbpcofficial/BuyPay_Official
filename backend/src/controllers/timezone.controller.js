@@ -1,6 +1,6 @@
 const httpStatus = require("http-status");
 const Timezone = require("../models/timezone.model");
-const { ADMIN } = require('../utils/role');
+const { ADMIN } = require("../utils/role");
 
 exports.load = async (req, res, next, id) => {
   try {
@@ -12,11 +12,9 @@ exports.load = async (req, res, next, id) => {
   }
 };
 
-
 exports.get = (req, res) => res.json(req.locals.timezone.transform());
 
 exports.create = async (req, res, next) => {
-  console.log("inside create");
   try {
     const timezone = new Timezone(req.body);
     timezone.user = req.user;

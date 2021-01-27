@@ -94,13 +94,10 @@ const Register = ({ history }) => {
         var addr = ks.getAddresses();
         var prv_key = ks.exportPrivateKey(addr, pwDerivedKey);
         var keystorage = ks.serialize();
-        console.log(1);
         setAddr(addr[0]);
         setPrvkey(prv_key);
         setKeystorage(keystorage);
         setSecretSeed(secretSeed);
-        console.log("..............................addr...................");
-        console.log(secretSeed);
       }
     );
   };
@@ -120,7 +117,6 @@ const Register = ({ history }) => {
   };
 
   const onChangeCaptcha = (e) => {
-    console.log(e.target.value);
     setCheckText("check");
     setCheckFlag(false);
     setFlag(true);

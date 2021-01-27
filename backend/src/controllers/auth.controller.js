@@ -21,7 +21,6 @@ function generateTokenResponse(user, accessToken) {
 }
 
 exports.register = async (req, res, next) => {
-  console.log("register controller");
   try {
     const userData = req.body;
     userData.role = Role.REGULAR;

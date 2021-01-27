@@ -17,7 +17,6 @@ const EditTimezone = ({ history }) => {
   }
 
   useEffect(() => {
-    console.log(history, timezoneId);
     loadTimezone();
   }, [history, timezoneId]);
 

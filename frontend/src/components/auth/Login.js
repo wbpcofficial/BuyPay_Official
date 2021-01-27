@@ -13,13 +13,13 @@ const Login = ({ history }) => {
 
   const onSubmit = async ({ email, password }) => {
     try {
-      await login({
+      let user = await login({
         email,
         password,
       });
+      console.log("user....", user);
       history.push("/dashboard");
     } catch (e) {
-      console.log(e.message);
       setSubmitError(e.message);
     }
   };

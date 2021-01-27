@@ -52,7 +52,6 @@ const ResetPassword = ({ history }) => {
     if (validateInput(password, passwordconfirm)) {
       try {
         let data = { email };
-        console.log("data....", data);
         if (password && password.length > 0) {
           data["password"] = password;
           data["resetToken"] = resetToken;
@@ -63,7 +62,6 @@ const ResetPassword = ({ history }) => {
         } else {
           setMessage("An error is occured");
         }
-        console.log(response);
       } catch (e) {
         console.log(e.message);
         setSubmitError(e.message);

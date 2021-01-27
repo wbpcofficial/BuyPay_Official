@@ -21,7 +21,6 @@ const FindPassword = ({ history }) => {
   const Captcha = async () => {
     try {
       const { success, data } = await getCaptcha();
-      console.log(success);
       setCaptchaText(data.text);
       setCaptchaImage(data.data);
     } catch (e) {
@@ -34,7 +33,6 @@ const FindPassword = ({ history }) => {
   };
 
   const onChangeCaptcha = (e) => {
-    console.log(e.target.value);
     setCheckText("check");
     setCheckFlag(false);
     setFlag(true);
