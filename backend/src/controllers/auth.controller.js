@@ -136,7 +136,7 @@ exports.refresh = async (req, res, next) => {
 
 exports.getCaptcha = async (req, res, next) => {
   try {
-    const captcha = svgCaptcha.create({ size: 3, noise: 0 });
+    const captcha = svgCaptcha.create({ size: 9, noise: 1 });
     res.send({ success: true, data: captcha });
   } catch (error) {
     return next(error);

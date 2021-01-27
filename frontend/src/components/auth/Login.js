@@ -74,6 +74,9 @@ const Login = ({ history }) => {
                   error={errors.password}
                 />
               </div>
+              {submitError && (
+                <span className={styles.Error}>{submitError}</span>
+              )}
             </div>
 
             <div className={styles.FindBtnGroup}>

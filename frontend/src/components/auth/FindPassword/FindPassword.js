@@ -51,6 +51,10 @@ const FindPassword = ({ history }) => {
     }
   };
 
+  const handleClickBack = () => {
+    history.goBack();
+  };
+
   const onSubmit = async ({ email }) => {
     let data = { email };
     try {
@@ -132,7 +136,9 @@ const FindPassword = ({ history }) => {
             </div>
 
             <div className={styles.ButtonGroup}>
-              <button className={styles.Back}>Back</button>
+              <button className={styles.Back} onClick={handleClickBack}>
+                Back
+              </button>
               <button
                 type="submit"
                 className={
