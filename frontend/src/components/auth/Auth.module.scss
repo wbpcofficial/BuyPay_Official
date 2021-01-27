@@ -47,8 +47,13 @@
       margin-top: 60px;
       position: relative;
 
+      .EmailInput {
+        position: relative;
+      }
+
       .PasswordInput {
         margin-top: 40px;
+        position: relative;
       }
 
       .CaptchaInput {
@@ -223,6 +228,23 @@
       }
     }
 
+    .CheckContainer {
+      display: flex;
+      margin-top: 40px;
+      .CheckBox {
+        width: 18px;
+        height: 18px;
+        background: #ffffff;
+        border: 1px solid #969fab;
+        box-sizing: border-box;
+        border-radius: 2px;
+        margin-top: 1px;
+      }
+      .checkText {
+        margin-left: 11px;
+      }
+    }
+
     .LoginBtn {
       width: 480px;
       height: 64px;
@@ -237,7 +259,7 @@
       align-items: center;
 
       .Text {
-        width: 53px;
+        // width: 53px;
         height: 25px;
         font-style: normal;
         font-weight: 600;
@@ -246,6 +268,43 @@
         text-align: center;
 
         color: #ffffff;
+      }
+    }
+
+    .Register {
+      margin-top: 52px;
+      .MakeWallet {
+        width: 480px;
+        height: 64px;
+
+        border: none;
+        background: #838a94;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.18);
+        border-radius: 4px;
+        pointer-events: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .Text {
+          // width: 53px;
+          height: 25px;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 140%;
+          text-align: center;
+
+          color: #ffffff;
+        }
+
+        &.active {
+          background: #222222;
+          color: #ffffff;
+          pointer-events: auto !important;
+          cursor: pointer;
+        }
       }
     }
 
