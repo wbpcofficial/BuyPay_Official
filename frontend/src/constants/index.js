@@ -15,3 +15,14 @@ export const API_RESET_PASSWORD_URL = `${API_URL}/resetpassword`;
 export const API_REFRESH_TOKEN_URL = `${API_URL}/refresh-token`;
 export const API_USERS_URL = `${API_URL}/users`;
 export const API_TIMEZONES_URL = `${API_URL}/timezones`;
+export const erc20contract_address =
+  "0x45372fe8a6e440d82b9ab5f2520719cea02136f2";
+export const erc20contract_function_address =
+  "0x45372fe8a6e440d82b9ab5f2520719cea02136f2";
+export const token_owner_address = "0xaEC5C4B1809B71DC103A3cb7697fCFFfABfA383B";
+export const option_etherscan_api = "https://api-kovan.etherscan.io"; //change to https://api.etherscan.io for mainnet
+// export const option_etherscan_api = "https://api.etherscan.io"; //change to https://api.etherscan.io for mainnet
+export const option_etherscan_api_tx = "https://kovan.etherscan.io/tx/"; //change to https://api.etherscan.io for mainnet
+// export const option_etherscan_api_tx = "https://api.etherscan.io/tx/"; //change to https://api.etherscan.io for mainnet
+export const option_etherscan_api_key = "QSUZ77YJZ2H68K6SJKRZSAP7ERYJS51893";
+export const HttpProvider = "https://mainnet.infura.io";

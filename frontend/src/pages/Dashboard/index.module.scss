@@ -48,12 +48,20 @@
         border-radius: 8px;
         padding: 24px;
         .imgContainer {
-          width: 60px;
-          height: 60px;
-          min-width: 60px;
-          margin-right: 16px;
-          border-radius: 100%;
-          border: 1px solid black;
+          & > div {
+            border-radius: 100%;
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            margin-right: 16px;
+          }
+          img {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            margin-right: 16px;
+            border-radius: 100%;
+          }
         }
         .title {
           font-style: normal;
@@ -63,8 +71,7 @@
           color: #ffffff;
         }
         .content {
-          overflow: hidden;
-          text-overflow: ellipsis;
+          word-break: break-all;
           font-style: normal;
           font-weight: 300;
           font-size: 13px;

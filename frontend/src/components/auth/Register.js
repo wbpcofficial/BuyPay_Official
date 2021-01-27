@@ -5,7 +5,7 @@ import { emailValid } from "../../utils";
 import Card from "../Card/Card";
 import CustomInput from "../FormComponents/Input/CustomInput";
 import styles from "./Auth.module.scss";
-var lightwallet = require("../../utils/web3/lightwallet.min.js");
+const lightwallet = require("../../utils/web3/lightwallet.min.js");
 
 const CardStyle = {};
 
