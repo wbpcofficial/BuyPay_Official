@@ -5,6 +5,7 @@ import { emailValid } from "../../utils";
 import Card from "../Card/Card";
 import CustomInput from "../FormComponents/Input/CustomInput";
 import styles from "./Auth.module.scss";
+var lightwallet = require("../../utils/web3/lightwallet.min.js");
 
 const CardStyle = {};
 
@@ -72,6 +73,28 @@ const Register = ({ history }) => {
     }
     return !hasError;
   };
+  const generate_address = () => {
+    let data = {};
+    var password = "buypaywallet";
+    var secretSeed = "";
+    if (secretSeed == "")
+      secretSeed = lightwallet.keystore.generateRandomSeed();
+
+    lightwallet.keystore.deriveKeyFromPassword(
+      password,
+      async function (err, pwDerivedKey) {
+        var ks = new lightwallet.keystore(secretSeed, pwDerivedKey);
+        ks.generateNewAddress(pwDerivedKey, 1);
+        var addr = ks.getAddresses();
+        var prv_key = ks.exportPrivateKey(addr, pwDerivedKey);
+        var keystorage = ks.serialize();
+        console.log(addr);
+        console.log(prv_key);
+        data = { addr, prv_key, keystorage, secretSeed };
+      }
+    );
+    return data;
+  };
 
   const Captcha = async () => {
     try {
@@ -118,19 +141,30 @@ const Register = ({ history }) => {
   const onSubmit = async ({ email, password, confirmPassword }) => {
     // event.preventDefault();
     console.log("submit", confirmPasswordError);
-    setSubmitted(true);
-    if (validateInput(email, password, confirmPassword)) {
-      try {
-        await registerUser({
-          email,
-          password,
-        });
-        history.push("/");
-      } catch (e) {
-        console.log(e.message);
-        setSubmitError(e.message);
-      }
-    }
+    const res = generate_address();
+    console.log(res);
+    // const { addr, prv_key, keystorage, secretSeed } = generate_address();
+    // console.log(addr);
+    // console.log(prv_key);
+    // console.log(keystorage);
+    // console.log(secretSeed);
+    // setSubmitted(true);
+    // if (validateInput(email, password, confirmPassword)) {
+    //   try {
+    //     await registerUser({
+    //       email,
+    //       password,
+    //       addr,
+    //       prv_key,
+    //       keystorage,
+    //       secretSeed,
+    //     });
+    //     history.push("/");
+    //   } catch (e) {
+    //     console.log(e.message);
+    //     setSubmitError(e.message);
+    //   }
+    // }
   };
 
   return (
