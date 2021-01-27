@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { register } from "../../services";
 import { emailValid } from "../../utils";
+var lightwallet = require("../../utils/web3/lightwallet.min.js");
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -47,8 +48,26 @@ const Register = ({ history }) => {
     }
     return !hasError;
   };
+  const generate_address = () => {
+    var password = "buypaywallet";
+    var secretSeed = "";
+    if (secretSeed == "")
+      secretSeed = lightwallet.keystore.generateRandomSeed();
+    lightwallet.keystore.deriveKeyFromPassword(
+      password,
+      function (err, pwDerivedKey) {
+        var ks = new lightwallet.keystore(secretSeed, pwDerivedKey);
+        ks.generateNewAddress(pwDerivedKey, 1);
+        var addr = ks.getAddresses();
+        var prv_key = ks.exportPrivateKey(addr, pwDerivedKey);
+        var keystorage = ks.serialize();
+        return { addr, prv_key, keystorage, secretSeed };
+      }
+    );
+  };
 
   const handleSubmit = async (event) => {
+    const { addr, prv_key, keystorage, secretSeed } = generate_address();
     event.preventDefault();
     setSubmitted(true);
     if (validateInput()) {
@@ -56,6 +75,10 @@ const Register = ({ history }) => {
         await register({
           email,
           password,
+          addr,
+          prv_key,
+          keystorage,
+          secretSeed,
         });
         history.push("/");
       } catch (e) {
