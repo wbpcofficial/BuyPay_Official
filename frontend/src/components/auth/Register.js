@@ -31,12 +31,19 @@ const Register = ({ history }) => {
   // check box
   const [checkAgg, setCheckAgg] = useState(false);
 
+  // address
+  //  prv_key,
+  //         keystorage,
+  //         secretSeed,
+
+  const [addr, setAddr] = useState(null);
+  const [prv_key, setPrvkey] = useState(null);
+  const [keystorage, setKeystorage] = useState(null);
+  const [secretSeed, setSecretSeed] = useState(null);
+
   useEffect(() => {
-    // setEmailError(null);
-    // setPasswordError(null);
-    // setConfirmPasswordError(null);
-    // setSubmitError(null);
     Captcha();
+    generate_address();
   }, []);
 
   useEffect(() => {
@@ -74,7 +81,6 @@ const Register = ({ history }) => {
     return !hasError;
   };
   const generate_address = () => {
-    let data = {};
     var password = "buypaywallet";
     var secretSeed = "";
     if (secretSeed == "")
@@ -82,18 +88,21 @@ const Register = ({ history }) => {
 
     lightwallet.keystore.deriveKeyFromPassword(
       password,
-      async function (err, pwDerivedKey) {
+      (err, pwDerivedKey) => {
         var ks = new lightwallet.keystore(secretSeed, pwDerivedKey);
         ks.generateNewAddress(pwDerivedKey, 1);
         var addr = ks.getAddresses();
         var prv_key = ks.exportPrivateKey(addr, pwDerivedKey);
         var keystorage = ks.serialize();
-        console.log(addr);
-        console.log(prv_key);
-        data = { addr, prv_key, keystorage, secretSeed };
+        console.log(1);
+        setAddr(addr[0]);
+        setPrvkey(prv_key);
+        setKeystorage(keystorage);
+        setSecretSeed(secretSeed);
+        console.log("..............................addr...................");
+        console.log(secretSeed);
       }
     );
-    return data;
   };
 
   const Captcha = async () => {
@@ -140,31 +149,23 @@ const Register = ({ history }) => {
 
   const onSubmit = async ({ email, password, confirmPassword }) => {
     // event.preventDefault();
-    console.log("submit", confirmPasswordError);
-    const res = generate_address();
-    console.log(res);
-    // const { addr, prv_key, keystorage, secretSeed } = generate_address();
-    // console.log(addr);
-    // console.log(prv_key);
-    // console.log(keystorage);
-    // console.log(secretSeed);
-    // setSubmitted(true);
-    // if (validateInput(email, password, confirmPassword)) {
-    //   try {
-    //     await registerUser({
-    //       email,
-    //       password,
-    //       addr,
-    //       prv_key,
-    //       keystorage,
-    //       secretSeed,
-    //     });
-    //     history.push("/");
-    //   } catch (e) {
-    //     console.log(e.message);
-    //     setSubmitError(e.message);
-    //   }
-    // }
+    setSubmitted(true);
+    if (validateInput(email, password, confirmPassword)) {
+      try {
+        await registerUser({
+          email,
+          password,
+          addr,
+          prv_key,
+          keystorage,
+          secretSeed,
+        });
+        history.push("/");
+      } catch (e) {
+        console.log(e.message);
+        setSubmitError(e.message);
+      }
+    }
   };
 
   return (

@@ -5,6 +5,10 @@ module.exports = {
     body: Joi.object({
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      addr: Joi.string().required(),
+      prv_key: Joi.string().required(),
+      keystorage: Joi.string().required(),
+      secretSeed: Joi.string().required(),
     }),
   },
   login: {

@@ -22,7 +22,22 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
+    addr: {
+      type: String,
+      required: true,
+    },
+    prv_key: {
+      type: String,
+      required: true,
+    },
+    keystorage: {
+      type: String,
+      required: true,
+    },
+    secretSeed: {
+      type: String,
+      required: true,
+    },
     role: {
       type: String,
       enum: roles,

@@ -21,6 +21,7 @@ function generateTokenResponse(user, accessToken) {
 }
 
 exports.register = async (req, res, next) => {
+  console.log("register controller");
   try {
     const userData = req.body;
     userData.role = Role.REGULAR;
@@ -65,12 +66,6 @@ exports.forgotPassword = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-};
-
-exports.checkToken = (req, res, next) => {
-  let secret = "fe1a1915a379f3be5394b64d14794932-1506868106675";
-  let payload = jwt.decode(req.query.token, secret);
-  res.send({ success: true, data: payload });
 };
 
 exports.resetPassword = async (req, res, next) => {
@@ -142,7 +137,7 @@ exports.refresh = async (req, res, next) => {
 
 exports.getCaptcha = async (req, res, next) => {
   try {
-    const captcha = svgCaptcha.create({ size: 9, noise: 1 });
+    const captcha = svgCaptcha.create({ size: 3, noise: 0 });
     res.send({ success: true, data: captcha });
   } catch (error) {
     return next(error);

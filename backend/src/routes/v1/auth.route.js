@@ -18,7 +18,6 @@ router.route("/login").post(validate(login), controller.login);
 router
   .route("/forgotpassword")
   .post(validate(forgotpassword), controller.forgotPassword);
-router.route("/check-token").get(controller.checkToken);
 router.route("/resetpassword").patch(controller.resetPassword);
 router.route("/profile").patch(authorize(), controller.updateProfile);
 router.route("/refresh-token").post(validate(refresh), controller.refresh);
