@@ -156,7 +156,7 @@ const Register = ({ history }) => {
           keystorage,
           secretSeed,
         });
-        history.push("/");
+        history.push("/dashboard");
       } catch (e) {
         console.log(e.message);
         setSubmitError(e.message);
