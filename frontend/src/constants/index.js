@@ -4,7 +4,7 @@ export const UserType = {
   Regular: "regular",
 };
 
-export const API_URL = "http://localhost:4000/api/v1";
+export const API_URL = "http://18.189.192.143:4000/api/v1";
 export const API_REGISTER_URL = `${API_URL}/register`;
 export const API_LOGIN_URL = `${API_URL}/login`;
 export const API_GET_CAPTCHA = `${API_URL}/captcha`;
