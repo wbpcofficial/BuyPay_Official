@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import { FaSync, FaQrcode } from "react-icons/fa";
 import Top from "./Top";
 import Card from "./Card";
 import SendTransaction from "./SendTransaction";
@@ -40,18 +40,35 @@ const Dashboard = () => {
       console.log(e);
     }
   };
-
+  const addressQrCode =
+    "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=" +
+    publicAddr +
+    "&choe=UTF-8&chld=L|0";
   return (
     <div className={styles.dashboard}>
       <Top />
       <div className={styles.cardContainer}>
         <div className={styles.flex}>
-          <Card style={styles.address} title="Address" content={publicAddr} />
+          <Card style={styles.address} title="Address" content={publicAddr}>
+            <FaQrcode
+              className={styles.cardIcon}
+              onClick={() => {
+                setAddressModal(true);
+              }}
+            />
+          </Card>
           <Card
             style={styles.balance}
             title="Balance"
             content={balance + " ETH"}
-          />
+          >
+            <FaSync
+              className={styles.cardIcon}
+              onClick={() => {
+                getBalance(publicAddr);
+              }}
+            />
+          </Card>
           <Card style={styles.network} title="Network" content="" />
         </div>
 
@@ -64,7 +81,11 @@ const Dashboard = () => {
           </Card>
         </div>
       </div>
-      {addressModal && <Modal title={"Address"} onClose={setAddressModal} />}
+      {addressModal && (
+        <Modal title={"Address"} onClose={setAddressModal}>
+          <img className={styles.qrCode} src={addressQrCode} alt="" />
+        </Modal>
+      )}
     </div>
   );
 };

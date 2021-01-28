@@ -21,7 +21,7 @@ const Modal = ({ title, onClose, ...props }) => {
             +
           </span>
         </div>
-        {props.children}
+        <div style={{ textAlign: "center" }}>{props.children}</div>
       </div>
     </>
   );
