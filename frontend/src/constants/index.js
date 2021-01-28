@@ -24,5 +24,7 @@ export const option_etherscan_api = "https://api-kovan.etherscan.io"; //change t
 // export const option_etherscan_api = "https://api.etherscan.io"; //change to https://api.etherscan.io for mainnet
 export const option_etherscan_api_tx = "https://kovan.etherscan.io/tx/"; //change to https://api.etherscan.io for mainnet
 // export const option_etherscan_api_tx = "https://api.etherscan.io/tx/"; //change to https://api.etherscan.io for mainnet
+export const option_etherscan_address = "https://kovan.etherscan.io/address/"; //change to https://api.etherscan.io for mainnet
+// export const option_etherscan_address = "https://etherscan.io/address/"; //change to https://api.etherscan.io for mainnet
 export const option_etherscan_api_key = "QSUZ77YJZ2H68K6SJKRZSAP7ERYJS51893";
 export const HttpProvider = "https://mainnet.infura.io";

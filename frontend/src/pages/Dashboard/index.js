@@ -5,6 +5,7 @@ import Top from "./Top";
 import Card from "./Card";
 import SendTransaction from "./SendTransaction";
 import TokenList from "./TokenList";
+import Modal from "../../components/Modal";
 import styles from "./index.module.scss";
 import {
   option_etherscan_api,
@@ -15,6 +16,7 @@ const Web3 = require("../../utils/web3/web3.min.js");
 const Dashboard = () => {
   const [publicAddr, setPublicAddr] = useState("");
   const [balance, setBalance] = useState(0);
+  const [addressModal, setAddressModal] = useState(false);
   const [ks, setKs] = useState("");
   useEffect(() => {
     let res = JSON.parse(localStorage.getItem("auth"));
@@ -62,6 +64,7 @@ const Dashboard = () => {
           </Card>
         </div>
       </div>
+      {addressModal && <Modal title={"Address"} onClose={setAddressModal} />}
     </div>
   );
 };

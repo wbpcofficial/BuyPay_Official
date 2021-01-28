@@ -28,9 +28,11 @@ const SendTransaction = ({ address, balance, ks }) => {
   const [totalBalance, setTotalBalance] = useState(0);
   const [toAddress, setToAddress] = useState("");
   const [type, setType] = useState("");
+
   useEffect(() => {
     setTotalBalance(balance);
   }, [balance]);
+
   const sendRwTr = async (value1, args, abifunc, to) => {
     try {
       const response = await axios.post(
@@ -108,6 +110,7 @@ const SendTransaction = ({ address, balance, ks }) => {
       ? setToAddress(newValue.value)
       : setToAddress("");
   };
+
   const handleAddressInputChange = (inputValue, actionMeta) => {
     // console.group("Input Changed");
     // console.log(inputValue);
@@ -118,12 +121,14 @@ const SendTransaction = ({ address, balance, ks }) => {
   const handleTypeChange = (newValue, actionMeta) => {
     setType(newValue.value);
   };
+
   const handleTypeInputChange = (inputValue, actionMeta) => {
     // console.group("Input Changed");
     // console.log(inputValue);
     // console.log(`action: ${actionMeta.action}`);
     // console.groupEnd();
   };
+
   const handleEntireBalance = () => {
     setAmount(totalBalance);
   };
@@ -139,6 +144,7 @@ const SendTransaction = ({ address, balance, ks }) => {
         erc20contract_address
       );
   };
+
   return (
     <div>
       <p className={styles.title}>Send Transaction</p>
@@ -172,7 +178,9 @@ const SendTransaction = ({ address, balance, ks }) => {
             type="number"
             value={amount}
             onChange={(event) => {
-              setAmount(event.target.value);
+              event.target.value < 0
+                ? setAmount(0)
+                : setAmount(event.target.value);
             }}
           />
         </div>
