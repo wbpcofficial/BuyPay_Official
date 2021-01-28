@@ -1,30 +1,107 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import Switch from "react-switch";
+import axios from "axios";
 import styles from "./index.module.scss";
+import {
+  erc20contract_address,
+  option_etherscan_api,
+  option_etherscan_api_key,
+} from "../../constants";
+const lightwallet = require("../../utils/web3/lightwallet.min.js");
 
-const addressOption = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
+const ERC20ABI = require("../../constants/abi.json");
+const addressOption = [];
 
 const typeOption = [
   { value: "eth", label: "ETH - Ethereum" },
-  { value: "wbpc", label: "BuyPay - Token" },
+  { value: "wbpc", label: "WBPC - BuyPay ERC20 Token" },
 ];
-const SendTransaction = () => {
+const SendTransaction = ({ address, balance, ks }) => {
   const [advancedToggle, setAdvancedToggle] = useState(false);
+  const [amount, setAmount] = useState(0);
+  const [totalBalance, setTotalBalance] = useState(0);
+  const [toAddress, setToAddress] = useState("");
+  const [type, setType] = useState("");
+  useEffect(() => {
+    setTotalBalance(balance);
+  }, [balance]);
+  const sendRwTr = async (value1, args, abifunc, to) => {
+    try {
+      const response = await axios.post(
+        option_etherscan_api +
+          "/api?module=proxy&action=eth_getTransactionCount&address=" +
+          address +
+          "&tag=latest&apikey=" +
+          option_etherscan_api_key
+      );
+
+      let options = {};
+      let gasPrice = "0x174876E800";
+      options.nonce = response.data.result;
+      options.to = to;
+      // options.gasPrice = Web3.utils.toHex('100000000000');
+      options.gasPrice = gasPrice;
+      options.gasLimit = 0x927c0; //web3.toHex('210000');
+      options.value = value1 * 1000000000000000000;
+      let password = "buypaywallet";
+      if (password || password === "") {
+        let keystorage = lightwallet.keystore.deserialize(ks);
+        keystorage.keyFromPassword(
+          password,
+          async function (err, pwDerivedKey) {
+            if (err) {
+              console.log(err);
+              return;
+            }
+
+            let registerTx;
+            if (abifunc === "") {
+              registerTx = lightwallet.txutils.valueTx(options);
+            } else {
+              registerTx = lightwallet.txutils.functionTx(
+                ERC20ABI,
+                abifunc,
+                args,
+                options
+              );
+            }
+
+            let signedTx = lightwallet.signing.signTx(
+              keystorage,
+              pwDerivedKey,
+              registerTx,
+              address
+            );
+            try {
+              const txId = await axios.get(
+                option_etherscan_api +
+                  "/api?module=proxy&action=eth_sendRawTransaction&hex=" +
+                  "0x" +
+                  signedTx +
+                  "&apikey=" +
+                  option_etherscan_api_key
+              );
+              console.log(txId);
+            } catch (e) {
+              console.log(e);
+            }
+          }
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const handleAdvancedToggle = () => {
     setAdvancedToggle(!advancedToggle);
   };
 
   const handleAddressChange = (newValue, actionMeta) => {
-    console.group("Value Changed");
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
+    newValue && newValue.value
+      ? setToAddress(newValue.value)
+      : setToAddress("");
   };
   const handleAddressInputChange = (inputValue, actionMeta) => {
     // console.group("Input Changed");
@@ -34,16 +111,28 @@ const SendTransaction = () => {
   };
 
   const handleTypeChange = (newValue, actionMeta) => {
-    console.group("Value Changed");
-    console.log(newValue);
-    console.log(`action: ${actionMeta.action}`);
-    console.groupEnd();
+    setType(newValue.value);
   };
   const handleTypeInputChange = (inputValue, actionMeta) => {
     // console.group("Input Changed");
     // console.log(inputValue);
     // console.log(`action: ${actionMeta.action}`);
     // console.groupEnd();
+  };
+  const handleEntireBalance = () => {
+    setAmount(totalBalance);
+  };
+
+  const handleSendTransaction = () => {
+    const value = parseFloat(amount);
+    if (type === "eth") sendRwTr(value, "", "", toAddress);
+    else if (type === "wbpc")
+      sendRwTr(
+        0,
+        [toAddress, value * 1000000000000000000],
+        "transfer",
+        erc20contract_address
+      );
   };
   return (
     <div>
@@ -65,9 +154,22 @@ const SendTransaction = () => {
         >
           <div className={styles.flexBlock}>
             <p className={styles.label}>Amount</p>
-            <span className={styles.entireBalance}>Entire Balane</span>
+            <span
+              className={styles.entireBalance}
+              onClick={() => {
+                handleEntireBalance();
+              }}
+            >
+              Entire Balane
+            </span>
           </div>
-          <input type="number" />
+          <input
+            type="number"
+            value={amount}
+            onChange={(event) => {
+              setAmount(event.target.value);
+            }}
+          />
         </div>
       </div>
 
@@ -120,7 +222,12 @@ const SendTransaction = () => {
       </div>
 
       <div className={styles.flexColumnBlock} style={{ marginTop: "117px" }}>
-        <div className={styles.submitBtn}>
+        <div
+          className={styles.submitBtn}
+          onClick={() => {
+            handleSendTransaction();
+          }}
+        >
           <p>SendTransaction</p>
         </div>
         <div className={styles.clearBtn}>
