@@ -1,6 +1,11 @@
 .dashboard {
   padding: 80px 15% 80px 15%;
   background-color: #f4f6f8;
+  .qrCode {
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+  }
   .top {
     display: flex;
     justify-content: space-between;
@@ -44,6 +49,17 @@
     .flex {
       display: flex;
       justify-content: space-between;
+      .cardIcon {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        color: white;
+        margin-left: 75px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
       & > div {
         border-radius: 8px;
         padding: 24px;
