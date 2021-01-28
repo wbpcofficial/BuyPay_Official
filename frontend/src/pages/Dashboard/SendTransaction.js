@@ -11,7 +11,12 @@ import {
 const lightwallet = require("../../utils/web3/lightwallet.min.js");
 
 const ERC20ABI = require("../../constants/abi.json");
-const addressOption = [];
+const addressOption = [
+  {
+    value: erc20contract_address,
+    label: erc20contract_address + " - BuyPay ERC20 token",
+  },
+];
 
 const typeOption = [
   { value: "eth", label: "ETH - Ethereum" },
