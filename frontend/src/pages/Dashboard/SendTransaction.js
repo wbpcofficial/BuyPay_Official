@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import Switch from "react-switch";
 import axios from "axios";
+import swal from "sweetalert";
+
 import styles from "./index.module.scss";
 import {
   erc20contract_address,
@@ -89,7 +91,13 @@ const SendTransaction = ({ address, balance, ks }) => {
                   "&apikey=" +
                   option_etherscan_api_key
               );
-              console.log(txId);
+              console.log(txId.data.result);
+              swal(
+                "Thank you.",
+                "The transaction has been successfully made. Please check with this transaction id.\n txId:" +
+                  txId.data.result,
+                "success"
+              );
             } catch (e) {
               console.log(e);
             }
