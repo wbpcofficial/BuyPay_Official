@@ -4,19 +4,27 @@ const { omitBy, isNil } = require("lodash");
 const APIError = require("../utils/APIError");
 const User = require("./user.model");
 
-const timezoneSchema = new mongoose.Schema(
+const tokenListSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       require: true,
     },
-    city: {
+    symbol: {
       type: String,
-      require: true,
+      require: false,
     },
-    timeDiff: {
+    decimal: {
       type: Number,
-      require: true,
+      require: false,
+    },
+    address: {
+      type: String,
+      required: false,
+    },
+    status: {
+      type: String,
+      required: false,
     },
     user: {
       type: mongoose.Types.ObjectId,
@@ -28,8 +36,7 @@ const timezoneSchema = new mongoose.Schema(
   }
 );
 
-
-timezoneSchema.method({
+tokenListSchema.method({
   transform() {
     const transformed = {};
     const fields = ["id", "name", "city", "timeDiff", "user", "createdAt"];
@@ -46,8 +53,7 @@ timezoneSchema.method({
   },
 });
 
-
-timezoneSchema.statics = {
+tokenListSchema.statics = {
   async get(id) {
     try {
       let timezone;
@@ -75,7 +81,7 @@ timezoneSchema.statics = {
 
     page = parseInt(page);
     perPage = parseInt(perPage);
-    
+
     // if keyword exists, find by name, email and role using keyword
     if (keyword && keyword.length > 0) {
       options["$or"] = [
@@ -91,7 +97,7 @@ timezoneSchema.statics = {
       options["user"] = userId;
     }
     console.log(options);
-    
+
     try {
       // Get timezones from database
       let timezones = await this.find(options)
@@ -117,4 +123,4 @@ timezoneSchema.statics = {
   },
 };
 
-module.exports = mongoose.model("Timezone", timezoneSchema);
+module.exports = mongoose.model("TokenList", tokenListSchema);

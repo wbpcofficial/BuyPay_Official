@@ -1,8 +1,8 @@
 const httpStatus = require("http-status");
 const { omit } = require("lodash");
 const User = require("../models/user.model");
-const Role = require('../utils/role');
-const Timezone = require("../models/timezone.model");
+const Role = require("../utils/role");
+const Timezone = require("../models/tokenlist.model");
 const APIError = require("../utils/APIError");
 
 exports.load = async (req, res, next, id) => {
@@ -22,7 +22,7 @@ exports.loggedIn = (req, res) => res.json(req.user.transform());
 
 exports.create = async (req, res, next) => {
   try {
-    const ommitRole = req.user.role !== Role.ADMIN ? 'role' : '';
+    const ommitRole = req.user.role !== Role.ADMIN ? "role" : "";
     const updatedUserData = omit(req.body, ommitRole);
     const user = new User(updatedUserData);
     const savedUser = await user.save();
@@ -34,7 +34,7 @@ exports.create = async (req, res, next) => {
 };
 
 exports.update = (req, res, next) => {
-  const ommitRole = req.user.role !== Role.ADMIN ? 'role' : '';
+  const ommitRole = req.user.role !== Role.ADMIN ? "role" : "";
   const updatedUserData = omit(req.body, ommitRole);
   const user = Object.assign(req.locals.user, updatedUserData);
 

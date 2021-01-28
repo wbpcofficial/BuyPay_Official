@@ -1,38 +1,38 @@
 const httpStatus = require("http-status");
-const Timezone = require("../models/timezone.model");
+const TokenList = require("../models/tokenlist.model");
 const { ADMIN } = require("../utils/role");
 
 exports.load = async (req, res, next, id) => {
   try {
-    const timezone = await Timezone.get(id);
-    req.locals = { timezone, permittedUserId: timezone.user._id };
+    const token = await TokenList.get(id);
+    req.locals = { token, permittedUserId: token.user._id };
     return next();
   } catch (error) {
     return next(error);
   }
 };
 
-exports.get = (req, res) => res.json(req.locals.timezone.transform());
+exports.get = (req, res) => res.json(req.locals.token.transform());
 
 exports.create = async (req, res, next) => {
   try {
-    const timezone = new Timezone(req.body);
-    timezone.user = req.user;
-    const savedTimezone = await timezone.save();
+    const token = new TokenList(req.body);
+    token.user = req.user;
+    const savedTokenlist = await token.save();
     res.status(httpStatus.CREATED);
-    res.json(savedTimezone.transform());
+    res.json(savedTokenlist.transform());
   } catch (error) {
     next(error);
   }
 };
 
 exports.update = (req, res, next) => {
-  const timezoneData = req.body;
-  const timezone = Object.assign(req.locals.timezone, timezoneData);
+  const tokenData = req.body;
+  const token = Object.assign(req.locals.token, tokenData);
 
-  timezone
+  token
     .save()
-    .then((savedTimezone) => res.json(savedTimezone.transform()))
+    .then((savedTokenData) => res.json(savedTokenData.transform()))
     .catch((e) => next(e));
 };
 
@@ -42,17 +42,17 @@ exports.list = async (req, res, next) => {
     if (req.user.role != ADMIN) {
       query["userId"] = req.user._id;
     }
-    let timezones = await Timezone.list(query);
-    res.json(timezones);
+    let tokenlist = await TokenList.list(query);
+    res.json(tokenlist);
   } catch (error) {
     next(error);
   }
 };
 
 exports.remove = (req, res, next) => {
-  const { timezone } = req.locals;
+  const { token } = req.locals;
 
-  timezone
+  token
     .remove()
     .then(() => res.status(httpStatus.NO_CONTENT).end())
     .catch((e) => next(e));
