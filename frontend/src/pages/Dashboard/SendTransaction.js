@@ -15,7 +15,7 @@ const addressOption = [];
 
 const typeOption = [
   { value: "eth", label: "ETH - Ethereum" },
-  { value: "wbpc", label: "BuyPay - Token" },
+  { value: "wbpc", label: "WBPC - BuyPay ERC20 Token" },
 ];
 const SendTransaction = ({ address, balance, ks }) => {
   const [advancedToggle, setAdvancedToggle] = useState(false);

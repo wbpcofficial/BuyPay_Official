@@ -4,6 +4,7 @@ import axios from "axios";
 import Top from "./Top";
 import Card from "./Card";
 import SendTransaction from "./SendTransaction";
+import TokenList from "./TokenList";
 import styles from "./index.module.scss";
 import {
   option_etherscan_api,
@@ -56,7 +57,9 @@ const Dashboard = () => {
           <Card isCard={false} style={styles.sendTransaction}>
             <SendTransaction ks={ks} address={publicAddr} balance={balance} />
           </Card>
-          <Card isCard={false} style={styles.tokenList} />
+          <Card isCard={false} style={styles.tokenList}>
+            <TokenList publicAddr={publicAddr} />
+          </Card>
         </div>
       </div>
     </div>

@@ -16,10 +16,10 @@ export const API_REFRESH_TOKEN_URL = `${API_URL}/refresh-token`;
 export const API_USERS_URL = `${API_URL}/users`;
 export const API_TIMEZONES_URL = `${API_URL}/timezones`;
 export const erc20contract_address =
-  "0x45372fe8a6e440d82b9ab5f2520719cea02136f2";
+  "0x558FB62af4f3b7abF17a6d3D96f5B6F444599376";
 export const erc20contract_function_address =
-  "0x45372fe8a6e440d82b9ab5f2520719cea02136f2";
-export const token_owner_address = "0xaEC5C4B1809B71DC103A3cb7697fCFFfABfA383B";
+  "0x558FB62af4f3b7abF17a6d3D96f5B6F444599376";
+export const token_owner_address = "0x54801Fe588D76aA1663ac5B3B97c0A7fc18DCa70";
 export const option_etherscan_api = "https://api-kovan.etherscan.io"; //change to https://api.etherscan.io for mainnet
 // export const option_etherscan_api = "https://api.etherscan.io"; //change to https://api.etherscan.io for mainnet
 export const option_etherscan_api_tx = "https://kovan.etherscan.io/tx/"; //change to https://api.etherscan.io for mainnet
