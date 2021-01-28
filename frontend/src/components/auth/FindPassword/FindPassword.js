@@ -11,6 +11,7 @@ const FindPassword = ({ history }) => {
   const [checkFlag, setCheckFlag] = useState(false);
   const [checkText, setCheckText] = useState("check");
   const [flag, setFlag] = useState(true);
+  const [error, setError] = useState("");
   const { register, handleSubmit, errors } = useForm();
   const ref = useRef(null);
 
@@ -65,6 +66,7 @@ const FindPassword = ({ history }) => {
         state: { email: email },
       });
     } catch (error) {
+      setError("Email address is not valid");
       console.log(error.message);
     }
   };
@@ -93,6 +95,7 @@ const FindPassword = ({ history }) => {
                   })}
                   error={errors.email}
                 />
+                {error && <span className={styles.Error}>{error}</span>}
               </div>
 
               <div className={styles.Captcha}>
