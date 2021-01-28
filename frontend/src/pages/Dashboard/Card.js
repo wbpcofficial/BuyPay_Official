@@ -14,7 +14,9 @@ const Card = ({ style, title, content, isCard = true, ...props }) => {
       {isCard && (
         <div style={{ display: "flex" }}>
           <div className={styles.imgContainer}>
-            {title === "Address" && <img src={imgLink} alt="" />}
+            {title === "Address" && (
+              <img style={{ border: "4px solid white" }} src={imgLink} alt="" />
+            )}
             {title === "Balance" && (
               <div
                 style={{
