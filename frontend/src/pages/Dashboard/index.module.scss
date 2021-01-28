@@ -77,6 +77,9 @@
           font-size: 13px;
           line-height: 140%;
           color: #ffffff;
+          a {
+            color: #ffffff;
+          }
         }
       }
       .address {
@@ -290,6 +293,9 @@
                   font-size: 14px;
                   line-height: 140%;
                   color: #4571e1;
+                  a {
+                    color: #4571e1;
+                  }
                 }
               }
               .tokenBalance {
