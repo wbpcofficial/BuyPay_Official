@@ -2,7 +2,7 @@ const httpStatus = require("http-status");
 const { omit } = require("lodash");
 const User = require("../models/user.model");
 const Role = require("../utils/role");
-const Timezone = require("../models/tokenlist.model");
+const Tokenlist = require("../models/tokenlist.model");
 const APIError = require("../utils/APIError");
 
 exports.load = async (req, res, next, id) => {
@@ -64,7 +64,7 @@ exports.remove = async (req, res, next) => {
     return next(error);
   }
   try {
-    await Timezone.deleteMany({ user: user._id });
+    await Tokenlist.deleteMany({ user: user._id });
     await user.remove();
     res.status(httpStatus.NO_CONTENT).end();
   } catch (error) {

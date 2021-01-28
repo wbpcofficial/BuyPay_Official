@@ -43,6 +43,7 @@ exports.list = async (req, res, next) => {
       query["userId"] = req.user._id;
     }
     let tokenlist = await TokenList.list(query);
+    console.log(tokenlist);
     res.json(tokenlist);
   } catch (error) {
     next(error);

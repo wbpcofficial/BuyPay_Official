@@ -12,19 +12,19 @@ const tokenListSchema = new mongoose.Schema(
     },
     symbol: {
       type: String,
-      require: false,
+      require: true,
     },
     decimal: {
       type: Number,
-      require: false,
+      require: true,
     },
     address: {
       type: String,
-      required: false,
+      required: true,
     },
     status: {
       type: String,
-      required: false,
+      required: true,
     },
     user: {
       type: mongoose.Types.ObjectId,
@@ -39,7 +39,16 @@ const tokenListSchema = new mongoose.Schema(
 tokenListSchema.method({
   transform() {
     const transformed = {};
-    const fields = ["id", "name", "city", "timeDiff", "user", "createdAt"];
+    const fields = [
+      "id",
+      "name",
+      "symbol",
+      "decimal",
+      "address",
+      "status",
+      "user",
+      "createdAt",
+    ];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
@@ -56,19 +65,19 @@ tokenListSchema.method({
 tokenListSchema.statics = {
   async get(id) {
     try {
-      let timezone;
+      let token;
 
-      // Get user with userId from timezone
+      // Get user with userId from token
       if (mongoose.Types.ObjectId.isValid(id)) {
-        timezone = await this.findById(id).populate("user");
+        token = await this.findById(id).populate("user");
       }
-      if (timezone) {
-        return timezone;
+      if (token) {
+        return token;
       }
 
-      // Returns error if timezone doesn't exist
+      // Returns error if token list doesn't exist
       throw new APIError({
-        message: "Timezone does not exist",
+        message: "Token does not exist",
         status: httpStatus.NOT_FOUND,
       });
     } catch (error) {
@@ -99,22 +108,22 @@ tokenListSchema.statics = {
     console.log(options);
 
     try {
-      // Get timezones from database
-      let timezones = await this.find(options)
+      // Get token list from database
+      let tokenlist = await this.find(options)
         .sort({ createdAt: -1 })
         .skip(perPage * (page - 1))
         .limit(perPage)
         .populate("user")
         .exec();
-      timezones = timezones.map((timezone) => timezone.transform());
+      tokenlist = tokenlist.map((token) => token.transform());
 
       let total = await this.countDocuments(options).exec();
 
       return {
-        timezones,
-        total,
-        page,
-        totalPages: Math.ceil(total / perPage),
+        tokenlist,
+        // total,
+        // page,
+        // totalPages: Math.ceil(total / perPage),
       };
     } catch (error) {
       console.log(error);
