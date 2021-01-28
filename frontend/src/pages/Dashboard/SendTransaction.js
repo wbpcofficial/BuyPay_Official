@@ -91,20 +91,29 @@ const SendTransaction = ({ address, balance, ks }) => {
                   "&apikey=" +
                   option_etherscan_api_key
               );
-              console.log(txId.data.result);
-              swal(
-                "Thank you.",
-                "The transaction has been successfully made. Please check with this transaction id.\n txId:" +
-                  txId.data.result,
-                "success"
-              );
+              console.log(txId);
+              if (txId.data.error)
+                swal("Oops...", txId.data.error.message, "error");
+              else
+                swal(
+                  "Thank you.",
+                  "The transaction has been successfully made. Please check with this transaction id.\n txId:" +
+                    txId.data.result,
+                  "success"
+                );
             } catch (e) {
+              swal(
+                "Oops...",
+                "Something went wrong, Please try again.",
+                "error"
+              );
               console.log(e);
             }
           }
         );
       }
     } catch (e) {
+      swal("Oops...", "Something went wrong, Please try again.", "error");
       console.log(e);
     }
   };
